@@ -12,7 +12,7 @@ import {
 } from "@nextui-org/react";
 import BuscadorProductos from "../Ventas/buscadorproductos";
 import DinamicTableVenta from "../Ventas/ventatable"; // Ajusta la ruta según sea necesario
-import productos from "./dataProductos"; // Ajusta la ruta según sea necesario
+import productos from "../dataProductos"; // Ajusta la ruta según sea necesario
 
 export default function VentaPage() {
   const [isOpen, setIsOpen] = useState(false);
