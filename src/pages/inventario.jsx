@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Input } from "@nextui-org/react";
-import DinamicTable from "../components/table";
+import DinamicTable from "../components/inventariotable";
 
 export default function InventarioPage() {
   const [productData, setProductData] = useState([]);

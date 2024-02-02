@@ -1,14 +1,15 @@
 // BuscadorProductos.js
 import { Input } from "@nextui-org/react";
 import React, { useState } from "react";
+import productos from "../dataProductos"; // Ajusta la ruta según sea necesario
 
-const BuscadorProductos = ({ products, onSelectProduct }) => {
+const BuscadorProductos = ({ onSelectProduct }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   const handleSearch = (term) => {
     setSearchTerm(term);
-    const filtered = products.filter((product) =>
+    const filtered = productos.filter((product) =>
       product.name.toLowerCase().includes(term.toLowerCase())
     );
     setFilteredProducts(filtered);
@@ -16,25 +17,28 @@ const BuscadorProductos = ({ products, onSelectProduct }) => {
 
   const handleSelectProduct = (product) => {
     onSelectProduct(product);
-    setSearchTerm("");
-    setFilteredProducts([]);
+    setSearchTerm(product.name); // Autocompletar el input con el nombre del producto
+    setFilteredProducts([]); // Limpiar las opciones después de la selección
+  };
+
+  const handleInputFocus = () => {
+    setFilteredProducts(productos);
   };
 
   return (
-    <div className="relative z-50">
-      {" "}
-      {/* Añade la propiedad z-50 para ajustar el z-index */}
+    <div className=" relative z-50">
       <Input
         label="Nombre del Producto"
         value={searchTerm}
         onChange={(e) => handleSearch(e.target.value)}
+        onFocus={handleInputFocus}
       />
-      {searchTerm && (
+      {filteredProducts.length > 0 && (
         <div className="absolute max-h-36 w-full overflow-y-auto bg-white border border-solid border-gray-300 rounded-lg mt-1 p-2 left-0">
           {filteredProducts.map((product) => (
             <div
               key={product.id}
-              className="cursor-pointer p-2 hover:bg-gray-100"
+              className=" p-2 cursor-pointer"
               onClick={() => handleSelectProduct(product)}
             >
               {product.name}

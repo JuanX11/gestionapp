@@ -1,3 +1,4 @@
+// En '../components/table/DinamicTable.jsx'
 import React from "react";
 import {
   Table,
@@ -7,28 +8,29 @@ import {
   TableRow,
   TableCell,
 } from "@nextui-org/react";
+import productos from "../datacompra"; // Ajusta la ruta según sea necesario
 
-const DinamicTable = ({ data }) => {
+const DinamicTable = () => {
   const columns = [
     {
-      key: "code",
-      label: "CÓDIGO",
+      key: "id",
+      label: "ID",
     },
     {
       key: "name",
       label: "NOMBRE",
     },
     {
-      key: "quantity",
-      label: "CANTIDAD",
-    },
-    {
       key: "price",
       label: "PRECIO",
     },
     {
-      key: "total",
-      label: "TOTAL",
+      key: "stock",
+      label: "STOCK",
+    },
+    {
+      key: "price",
+      label: "PRECIO",
     },
   ];
 
@@ -37,9 +39,9 @@ const DinamicTable = ({ data }) => {
       <TableHeader columns={columns}>
         {(column) => <TableColumn key={column.key}>{column.label}</TableColumn>}
       </TableHeader>
-      <TableBody items={data}>
+      <TableBody items={productos}>
         {(item) => (
-          <TableRow key={item.code}>
+          <TableRow key={item.id}>
             {(columnKey) => <TableCell>{item[columnKey]}</TableCell>}
           </TableRow>
         )}
