@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import AgregarVenta from "../components/agregarVentaModal";
+import React from "react";
+import AgregarVenta from "../components/Ventas/agregarVentaModal";
 
 export default function VentaPage() {
   return (

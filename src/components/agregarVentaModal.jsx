@@ -17,15 +17,16 @@ export default function VentaPage() {
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   const products = [
-    { id: 1, name: "Producto 1", price: 10 },
-    { id: 2, name: "Producto 2", price: 20 },
-    { id: 3, name: "Producto 3", price: 30 },
-    { id: 4, name: "Producto 4", price: 10 },
-    { id: 5, name: "Producto 5", price: 20 },
-    { id: 6, name: "Producto 6", price: 30 },
-    { id: 7, name: "Producto 7", price: 10 },
-    { id: 8, name: "Producto 8", price: 20 },
-    { id: 9, name: "Producto 9", price: 30 },
+    { id: 1, name: "Gorra roja", price: 10 },
+    { id: 2, name: "Gorra verde", price: 20 },
+    { id: 3, name: "Camuflado XL", price: 30 },
+    { id: 4, name: "Camuflado L", price: 10 },
+    { id: 5, name: "Botas Americanas", price: 20 },
+    { id: 6, name: "Botas Nacionales", price: 30 },
+    { id: 7, name: "Distintivo", price: 10 },
+    { id: 8, name: "Camisa Táctica", price: 20 },
+    { id: 9, name: "Gafas", price: 30 },
+    { id: 9, name: "CamelBack", price: 30 },
     // ... otros productos
   ];
   const handleSelectProduct = (product) => {
@@ -38,33 +39,33 @@ export default function VentaPage() {
         <div className="w-5/6">
           <Input label="Nombre del Producto" />
         </div>
-        <div className="w-1/6">
-          <Tooltip
-            content="Agregar Producto"
-            delay={0}
-            closeDelay={0}
-            position="bottom"
-          >
-            <Button onClick={() => setIsOpen(true)}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="icon icon-tabler icon-tabler-plus"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                strokeWidth="2"
-                stroke="currentColor"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M12 5l0 14" />
-                <path d="M5 12l14 0" />
-              </svg>
-            </Button>
-          </Tooltip>
-        </div>
+
+        <Tooltip
+          content="Agregar Producto"
+          delay={0}
+          closeDelay={0}
+          position="bottom"
+        >
+          <Button className="w-1/6" onClick={() => setIsOpen(true)}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="icon icon-tabler icon-tabler-plus"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              strokeWidth="2"
+              stroke="currentColor"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M12 5l0 14" />
+              <path d="M5 12l14 0" />
+            </svg>
+          </Button>
+        </Tooltip>
+
         <Modal
           isOpen={isOpen}
           placement={"center"}

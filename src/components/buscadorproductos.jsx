@@ -21,30 +21,27 @@ const BuscadorProductos = ({ products, onSelectProduct }) => {
   };
 
   return (
-    <div>
+    <div className="relative z-50">
+      {" "}
+      {/* Añade la propiedad z-50 para ajustar el z-index */}
       <Input
         label="Nombre del Producto"
         value={searchTerm}
         onChange={(e) => handleSearch(e.target.value)}
       />
-      <div
-        style={{
-          maxHeight: "200px",
-          overflowY: "auto",
-          borderRadius: "10px", // Ajusta el valor según tu preferencia
-          border: "1px solid #ccc", // Puedes agregar un borde si lo deseas
-        }}
-      >
-        {filteredProducts.map((product) => (
-          <div
-            key={product.id}
-            className="border p-2 cursor-pointer"
-            onClick={() => handleSelectProduct(product)}
-          >
-            {product.name}
-          </div>
-        ))}
-      </div>
+      {searchTerm && (
+        <div className="absolute max-h-36 w-full overflow-y-auto bg-white border border-solid border-gray-300 rounded-lg mt-1 p-2 left-0">
+          {filteredProducts.map((product) => (
+            <div
+              key={product.id}
+              className="cursor-pointer p-2 hover:bg-gray-100"
+              onClick={() => handleSelectProduct(product)}
+            >
+              {product.name}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
