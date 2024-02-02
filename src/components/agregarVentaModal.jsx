@@ -33,76 +33,70 @@ export default function VentaPage() {
   };
 
   return (
-    <>
-      <div className="flex flex-col w-auto ">
-        <div className="flex flex-row w-auto gap-4">
-          <div className="flex w-screen lg:w-5/6 flex-wrap px-4 py-2 justify-around place-items-center">
-            <Input label="Nombre del Producto" />
-          </div>
-          <div className="flex w-full lg:w-1/6 flex-wrap px-4 py-2 justify-around place-items-center">
-            <Tooltip
-              content="Agregar Producto"
-              delay={0}
-              closeDelay={0}
-              position="bottom"
-            >
-              <Button onClick={() => setIsOpen(true)}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="icon icon-tabler icon-tabler-plus"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  strokeWidth="2"
-                  stroke="currentColor"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M12 5l0 14" />
-                  <path d="M5 12l14 0" />
-                </svg>
-              </Button>
-            </Tooltip>
-          </div>
-          <Modal
-            isOpen={isOpen}
-            placement={"center"}
-            onOpenChange={() => setIsOpen(!isOpen)}
-          >
-            <ModalContent>
-              <ModalHeader className="flex flex-col gap-1">
-                Agregar Producto
-              </ModalHeader>
-              <ModalBody>
-                <BuscadorProductos
-                  products={products}
-                  onSelectProduct={handleSelectProduct}
-                />
-                <Input label="Cantidad" type="number" defaultValue="1"></Input>
-                <Input
-                  label="Precio"
-                  type="number"
-                  placeholder="$0.000"
-                ></Input>
-              </ModalBody>
-              <ModalFooter>
-                <Button
-                  color="danger"
-                  variant="light"
-                  onPress={() => setIsOpen(false)}
-                >
-                  Cancelar
-                </Button>
-                <Button color="primary" onPress={() => setIsOpen(false)}>
-                  Agregar A La Venta
-                </Button>
-              </ModalFooter>
-            </ModalContent>
-          </Modal>
+    <div className="flex flex-col  ">
+      <div className="flex flex-row gap-4 p-2 place-items-center  ">
+        <div className="w-5/6">
+          <Input label="Nombre del Producto" />
         </div>
+        <div className="w-1/6">
+          <Tooltip
+            content="Agregar Producto"
+            delay={0}
+            closeDelay={0}
+            position="bottom"
+          >
+            <Button onClick={() => setIsOpen(true)}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="icon icon-tabler icon-tabler-plus"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                strokeWidth="2"
+                stroke="currentColor"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M12 5l0 14" />
+                <path d="M5 12l14 0" />
+              </svg>
+            </Button>
+          </Tooltip>
+        </div>
+        <Modal
+          isOpen={isOpen}
+          placement={"center"}
+          onOpenChange={() => setIsOpen(!isOpen)}
+        >
+          <ModalContent>
+            <ModalHeader className="flex flex-col gap-1">
+              Agregar Producto
+            </ModalHeader>
+            <ModalBody>
+              <BuscadorProductos
+                products={products}
+                onSelectProduct={handleSelectProduct}
+              />
+              <Input label="Cantidad" type="number" defaultValue="1"></Input>
+              <Input label="Precio" type="number" placeholder="$0.000"></Input>
+            </ModalBody>
+            <ModalFooter>
+              <Button
+                color="danger"
+                variant="light"
+                onPress={() => setIsOpen(false)}
+              >
+                Cancelar
+              </Button>
+              <Button color="primary" onPress={() => setIsOpen(false)}>
+                Agregar A La Venta
+              </Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
       </div>
-    </>
+    </div>
   );
 }

@@ -16,8 +16,8 @@ export default function NavigationBar() {
   const location = useLocation();
 
   const menuItems = [
-    { label: "Inicio", path: "/" },
-    { label: "Dashboard", path: "/dashboard" },
+    { label: "Dashboard", path: "/" },
+    { label: "Venta", path: "/venta" },
     { label: "Inventario", path: "/inventario" },
   ];
 
@@ -25,18 +25,19 @@ export default function NavigationBar() {
     <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
       <NavbarContent className="sm:hidden" justify="start">
         <NavbarMenuToggle
+          className="sm:hidden"
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
         />
       </NavbarContent>
 
       <NavbarContent className="sm:hidden pr-3" justify="center">
         <NavbarBrand>
-          <p className="font-bold text-inherit">GestionAPP</p>
+          <p className="font-bold text-inherit hidden sm:block">GestionAPP</p>
         </NavbarBrand>
       </NavbarContent>
-      <NavbarContent>
+      <NavbarContent className="hidden sm:flex">
         <NavbarBrand>
-          <p className="font-bold text-inherit">GestionAPP</p>
+          <p className="font-bold text-inherit hidden sm:block">GestionAPP</p>
         </NavbarBrand>
       </NavbarContent>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
@@ -78,7 +79,7 @@ export default function NavigationBar() {
                 <path d="M21 12h-13l3 -3" />
                 <path d="M11 15l-3 -3" />
               </svg>
-              Sign Up
+              Cerrar Sesión
             </Button>
           </Link>
         </NavbarItem>
