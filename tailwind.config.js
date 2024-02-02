@@ -12,7 +12,7 @@ module.exports = {
         primary: {
           //... 50 to 900
           foreground: "#F6F5FB",
-          DEFAULT: "#2e3033", //CAMBIO DE COLORES
+          DEFAULT: "#fe3033", //CAMBIO DE COLORES
         },
         /*asi mismo se ponen todos los demas */
       },

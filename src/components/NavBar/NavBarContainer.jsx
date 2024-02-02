@@ -9,12 +9,17 @@ import {
   NavbarMenu,
   NavbarMenuItem,
 } from "@nextui-org/react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-export default function NavegationBar() {
+export default function NavigationBar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const location = useLocation();
 
-  const menuItems = ["Inicio", "Dashboard", "Cerrar Sesión"];
+  const menuItems = [
+    { label: "Inicio", path: "/" },
+    { label: "Dashboard", path: "/dashboard" },
+    { label: "Inventario", path: "/inventario" },
+  ];
 
   return (
     <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
@@ -26,59 +31,70 @@ export default function NavegationBar() {
 
       <NavbarContent className="sm:hidden pr-3" justify="center">
         <NavbarBrand>
-          {/*Aquiva el logo */}
-          <p className="font-bold text-inherit">ACME</p>
+          <p className="font-bold text-inherit">GestionAPP</p>
         </NavbarBrand>
       </NavbarContent>
-      <NavbarBrand>
-        {/*Aquiva el logo */}
-        <p className="font-bold text-inherit">ACME</p>
-      </NavbarBrand>
+
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarItem>
-          <Link to="/" aria-current="page">
-            Inicio
-          </Link>
-        </NavbarItem>
-        <NavbarItem isActive>
-          <Link to="/" aria-current="page">
-            DashBoard
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link to="/" aria-current="page">
-            Inventario
-          </Link>
-        </NavbarItem>
+        <NavbarBrand>
+          <p className="font-bold text-inherit">GestionAPP</p>
+        </NavbarBrand>
+
+        {menuItems.map((item, index) => (
+          <NavbarItem
+            key={`${item.label}-${index}`}
+            isActive={location.pathname === item.path}
+          >
+            <Link
+              to={item.path}
+              className={`w-full ${
+                location.pathname === item.path ? "text-primary" : ""
+              }`}
+            >
+              {item.label}
+            </Link>
+          </NavbarItem>
+        ))}
       </NavbarContent>
 
       <NavbarContent justify="end">
-        <NavbarItem className="hidden lg:flex">
-          <Link href="/login">Login</Link>
-        </NavbarItem>
         <NavbarItem>
-          <Button as={Link} color="warning" href="#" variant="flat">
-            Sign Up
-          </Button>
+          <Link to="/login">
+            <Button color="primary" variant="flat">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="icon icon-tabler icon-tabler-login"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                strokeWidth="2"
+                stroke="currentColor"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M15 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
+                <path d="M21 12h-13l3 -3" />
+                <path d="M11 15l-3 -3" />
+              </svg>
+              Sign Up
+            </Button>
+          </Link>
         </NavbarItem>
       </NavbarContent>
 
       <NavbarMenu>
         {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
+          <NavbarMenuItem key={`${item.label}-${index}`}>
             <Link
-              className="w-full"
-              color={
-                index === 2
-                  ? "warning"
-                  : index === menuItems.length - 1
-                  ? "danger"
-                  : "foreground"
-              }
-              href="#"
+              className={`w-full ${
+                location.pathname === item.path ? "text-primary" : "foreground"
+              }`}
+              to={item.path}
               size="lg"
             >
-              {item}
+              {item.label}
             </Link>
           </NavbarMenuItem>
         ))}
