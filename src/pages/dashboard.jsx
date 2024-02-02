@@ -2,7 +2,7 @@ export default function DashBoardPage() {
   return (
     <>
       <div>
-        <h1>App</h1>
+        <h1>Dashboard</h1>
       </div>
     </>
   );
