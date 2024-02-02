@@ -34,12 +34,12 @@ export default function NavigationBar() {
           <p className="font-bold text-inherit">GestionAPP</p>
         </NavbarBrand>
       </NavbarContent>
-
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+      <NavbarContent>
         <NavbarBrand>
           <p className="font-bold text-inherit">GestionAPP</p>
         </NavbarBrand>
-
+      </NavbarContent>
+      <NavbarContent className="hidden sm:flex gap-4" justify="center">
         {menuItems.map((item, index) => (
           <NavbarItem
             key={`${item.label}-${index}`}
